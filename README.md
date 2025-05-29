@@ -8,6 +8,7 @@ The core concept learnt here is testing.
 - stateful widgets
 - Floating Action buttons with icons.
 - onPressed function
+- unitary and multiple testing (test, group, except)
 
 ## Screenshots
 ### Unitary and Group testing basics
