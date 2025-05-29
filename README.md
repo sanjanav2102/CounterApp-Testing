@@ -14,7 +14,7 @@ The core concept learnt here is testing.
 - TextField, keyBoardType, decoration
 - Retriveing the value in the textfield
 - Keys for unique identification of elements/widgets in other files
-- TestWidgets function
+- testWidgets function -- pump
 
 
 ## Screenshots
