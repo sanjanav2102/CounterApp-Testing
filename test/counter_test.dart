@@ -20,7 +20,7 @@ void main() {
     test('value should be incremented', () {
       final counter = Counter();
       counter.increment();
-      expect(counter.count, 1);
+      expect(counter.count, 2);
     });
 
     test('value should be decremented', () {

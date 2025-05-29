@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'counter.dart';
 
 
 class CounterScreen extends StatefulWidget {
@@ -11,29 +10,68 @@ class CounterScreen extends StatefulWidget {
 }
 
 class _CounterScreenState extends State<CounterScreen> {
-  final Counter counter = Counter();
-  //function is initialized.
-  //
-  void increment(){
+  int  _count = 0;
+  final TextEditingController _controller = TextEditingController();
+
+  void _incrementcount() {
     setState(() {
-      counter.increment();
+      _count++;
     });
   }
-  void decrement(){
+  void _setCustomValue(){
+    final value = int.parse(_controller.text);
     setState(() {
-      counter.decrement();
+      _count =value;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Counter App',
          ),
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.blue,
         centerTitle: true,
       ),
-      body: Center(
+      body: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text('Count : ${_count}',key: Key('counterText'),
+              style: TextStyle(
+                fontSize: 20,
+              ),),
+              SizedBox(height:10),
+              ElevatedButton(onPressed: _incrementcount,
+                  key: Key('incrementButton'),
+                  child: const Text('Increment')
+              ),
+              TextField(
+                key: Key('inputField'),
+              controller: _controller,
+              keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: 'Set custom value:'),
+              ),
+              SizedBox(height:10),
+              ElevatedButton(onPressed: _setCustomValue,
+                  key: Key('setCustomButton'),
+                  child: Text('Set value'))
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+/*
+body: Center(
         child:Text('Counter: ${counter.count}',
           style: TextStyle(
             fontSize: 30,
@@ -57,6 +95,15 @@ class _CounterScreenState extends State<CounterScreen> {
         ),
       ),
 
-    );
+
+      void increment(){
+    setState(() {
+      counter.increment();
+    });
   }
-}
+  void decrement(){
+    setState(() {
+      counter.decrement();
+    });
+  }
+ */
